@@ -1,0 +1,762 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>12、淘汰策略 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="11、redis做缓存.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Redis</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../基础篇/">
+            
+                <a href="../基础篇/">
+            
+                    
+                    基础篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../基础篇/1、简单key-value数据库基础架构.html">
+            
+                <a href="../基础篇/1、简单key-value数据库基础架构.html">
+            
+                    
+                    1、简单Key Value数据库基础架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../基础篇/2、数据结构.html">
+            
+                <a href="../基础篇/2、数据结构.html">
+            
+                    
+                    2、数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="../基础篇/3、高性能IO模型.html">
+            
+                <a href="../基础篇/3、高性能IO模型.html">
+            
+                    
+                    3、高性能IO模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="../基础篇/4、redis数据持久化.html">
+            
+                <a href="../基础篇/4、redis数据持久化.html">
+            
+                    
+                    4、Redis数据持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="../基础篇/5、redis主从库模式.html">
+            
+                <a href="../基础篇/5、redis主从库模式.html">
+            
+                    
+                    5、Redis主从库模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="../基础篇/6、哨兵机制.html">
+            
+                <a href="../基础篇/6、哨兵机制.html">
+            
+                    
+                    6、哨兵机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="../基础篇/7、哨兵集群.html">
+            
+                <a href="../基础篇/7、哨兵集群.html">
+            
+                    
+                    7、哨兵集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="../基础篇/8、切片集群.html">
+            
+                <a href="../基础篇/8、切片集群.html">
+            
+                    
+                    8、切片集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    实践篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="1、string类型的内存结构和压缩表.html">
+            
+                <a href="1、string类型的内存结构和压缩表.html">
+            
+                    
+                    1、String类型的内存结构和压缩表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="2、集合类型的选择.html">
+            
+                <a href="2、集合类型的选择.html">
+            
+                    
+                    2、集合类型的选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="3、扩展数据类型 GEO.html">
+            
+                <a href="3、扩展数据类型 GEO.html">
+            
+                    
+                    3、扩展数据类型 GEO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="4、存储时间序列数据.html">
+            
+                <a href="4、存储时间序列数据.html">
+            
+                    
+                    4、存储时间序列数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="5、实现消息队列.html">
+            
+                <a href="5、实现消息队列.html">
+            
+                    
+                    5、实现消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="6、内部阻塞式操作.html">
+            
+                <a href="6、内部阻塞式操作.html">
+            
+                    
+                    6、内部阻塞式操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="7、CPU结构对redis的影响.html">
+            
+                <a href="7、CPU结构对redis的影响.html">
+            
+                    
+                    7、CPU结构对Redis的影响
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="8、redis变慢问题.html">
+            
+                <a href="8、redis变慢问题.html">
+            
+                    
+                    8、Redis变慢问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="9、redis内存碎片.html">
+            
+                <a href="9、redis内存碎片.html">
+            
+                    
+                    9、Redis内存碎片
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="10、缓冲区.html">
+            
+                <a href="10、缓冲区.html">
+            
+                    
+                    10、缓冲区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="11、redis做缓存.html">
+            
+                <a href="11、redis做缓存.html">
+            
+                    
+                    11、Redis做缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.12" data-path="12、淘汰策略.html">
+            
+                <a href="12、淘汰策略.html">
+            
+                    
+                    12、淘汰策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Mysql</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    基础篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../mysql/基础篇/0、mysql命令.html">
+            
+                <a href="../../mysql/基础篇/0、mysql命令.html">
+            
+                    
+                    0、Mysql命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../mysql/基础篇/1、基础架构.html">
+            
+                <a href="../../mysql/基础篇/1、基础架构.html">
+            
+                    
+                    1、基础架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../mysql/基础篇/2、日志模块.html">
+            
+                <a href="../../mysql/基础篇/2、日志模块.html">
+            
+                    
+                    2、日志模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../mysql/基础篇/3、事务隔离.html">
+            
+                <a href="../../mysql/基础篇/3、事务隔离.html">
+            
+                    
+                    3、事务隔离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../mysql/基础篇/4、索引.html">
+            
+                <a href="../../mysql/基础篇/4、索引.html">
+            
+                    
+                    4、索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../mysql/基础篇/5、锁.html">
+            
+                <a href="../../mysql/基础篇/5、锁.html">
+            
+                    
+                    5、锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    实践篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../mysql/实践篇/1、普通索引和唯一索引.html">
+            
+                <a href="../../mysql/实践篇/1、普通索引和唯一索引.html">
+            
+                    
+                    1、普通索引和唯一索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../mysql/实践篇/2、怎么给字符串字段加索引.html">
+            
+                <a href="../../mysql/实践篇/2、怎么给字符串字段加索引.html">
+            
+                    
+                    2、怎么给字符串字段加索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../mysql/实践篇/3、如何计算表的数据量.html">
+            
+                <a href="../../mysql/实践篇/3、如何计算表的数据量.html">
+            
+                    
+                    3、如何计算表的数据量
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >12、淘汰策略</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="redis&#x6DD8;&#x6C70;&#x7B56;&#x7565;">redis&#x6DD8;&#x6C70;&#x7B56;&#x7565;</h1>
+<p>&#x8981;&#x7F13;&#x5B58;&#x7684;&#x6570;&#x636E;&#x91CF;&#x8D8A;&#x6765;&#x8D8A;&#x5927;&#xFF0C;&#x6709;&#x9650;&#x7684;&#x7F13;&#x5B58;&#x7A7A;&#x95F4;&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x5730;&#x4F1A;&#x88AB;&#x5199;&#x6EE1;&#xFF0C;&#x89E3;&#x51B3;&#x6B64;&#x95EE;&#x9898;&#xFF0C;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x673A;&#x5236;&#xFF0C;&#x5373;<strong>&#x7F13;&#x5B58;&#x6570;&#x636E;&#x7684;&#x6DD8;&#x6C70;&#x673A;&#x5236;</strong>&#x3002;</p>
+<h2 id="&#x516B;&#x4E8C;&#x539F;&#x7406;">&#x516B;&#x4E8C;&#x539F;&#x7406;</h2>
+<p>&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x8BBE;&#x7F6E;&#x5F97;&#x662F;&#x5426;&#x5408;&#x7406;&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x5230;&#x4F7F;&#x7528;&#x7F13;&#x5B58;&#x7684;&#x6027;&#x4EF7;&#x6BD4;&#x3002;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x5E0C;&#x671B;&#x4EE5;&#x6700;&#x5C0F;&#x7684;&#x4EE3;&#x4EF7;&#x53BB;&#x83B7;&#x5F97;&#x6700;&#x5927;&#x7684;&#x6536;&#x76CA;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;&#x628A;&#x6602;&#x8D35;&#x7684;&#x5185;&#x5B58;&#x8D44;&#x6E90;&#x7528;&#x5728;&#x5173;&#x952E;&#x5730;&#x65B9;&#x5C31;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x4E86;&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x662F;&#x5177;&#x6709;&#x5C40;&#x90E8;&#x6027;&#x7684;&#x3002;&#x4E0B;&#x9762;&#x6709;&#x4E00;&#x5F20;&#x56FE;&#xFF0C;&#x56FE;&#x91CC;&#x6709;&#x7EA2;&#x3001;&#x84DD;&#x4E24;&#x6761;&#x7EBF;&#xFF0C;&#x663E;&#x793A;&#x4E86;&#x4E0D;&#x540C;&#x6BD4;&#x4F8B;&#x6570;&#x636E;&#x8D21;&#x732E;&#x7684;&#x8BBF;&#x95EE;&#x91CF;&#x60C5;&#x51B5;&#x3002;&#x84DD;&#x7EBF;&#x4EE3;&#x8868;&#x4E86;&#x201C;&#x516B;&#x4E8C;&#x539F;&#x7406;&#x201D;&#x8868;&#x793A;&#x7684;&#x6570;&#x636E;&#x5C40;&#x90E8;&#x6027;&#xFF0C;&#x800C;&#x7EA2;&#x7EBF;&#x5219;&#x8868;&#x793A;&#x5728;&#x5F53;&#x524D;&#x5E94;&#x7528;&#x8D1F;&#x8F7D;&#x4E0B;&#xFF0C;&#x6570;&#x636E;&#x5C40;&#x90E8;&#x6027;&#x7684;&#x53D8;&#x5316;&#x3002;</p>
+<p><img src="images/image-20210729152904977.png" alt="image-20210729152904977"></p>
+<h3 id="&#x84DD;&#x7EBF;">&#x84DD;&#x7EBF;</h3>
+<p>&#x84DD;&#x7EBF;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x7684;&#x5C31;&#x662F;&#x201C;&#x516B;&#x4E8C;&#x539F;&#x7406;&#x201D;&#xFF0C;&#x6709; 20% &#x7684;&#x6570;&#x636E;&#x8D21;&#x732E;&#x4E86; 80% &#x7684;&#x8BBF;&#x95EE;&#x4E86;&#xFF0C;&#x800C;&#x5269;&#x4F59;&#x7684;&#x6570;&#x636E;&#x867D;&#x7136;&#x4F53;&#x91CF;&#x5F88;&#x5927;&#xFF0C;&#x4F46;&#x53EA;&#x8D21;&#x732E;&#x4E86; 20% &#x7684;&#x8BBF;&#x95EE;&#x91CF;&#x3002;&#x8FD9; 80% &#x7684;&#x6570;&#x636E;&#x5728;&#x8BBF;&#x95EE;&#x91CF;&#x4E0A;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x6761;&#x957F;&#x957F;&#x7684;&#x5C3E;&#x5DF4;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x79F0;&#x4E3A;&#x201C;<strong>&#x957F;&#x5C3E;&#x6548;&#x5E94;</strong>&#x201D;&#xFF0C;&#x5982;&#x7535;&#x5546;&#x5546;&#x54C1;&#x7684;&#x8BBF;&#x95EE;&#x573A;&#x666F;&#x3002;</p>
+<h3 id="&#x7EA2;&#x7EBF;">&#x7EA2;&#x7EBF;</h3>
+<p>&#x7EA2;&#x7EBF;&#xFF0C;20% &#x7684;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x8D21;&#x732E;&#x4E0D;&#x4E86; 80% &#x7684;&#x8BBF;&#x95EE;&#xFF0C;&#x800C;&#x5269;&#x4F59;&#x7684; 80% &#x6570;&#x636E;&#x53CD;&#x800C;&#x8D21;&#x732E;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x8BBF;&#x95EE;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;<strong>&#x91CD;&#x5C3E;&#x6548;&#x5E94;</strong>&#x3002;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;&#x7528;&#x6237;&#x7684;&#x4E2A;&#x6027;&#x5316;&#x9700;&#x6C42;&#x8D8A;&#x6765;&#x8D8A;&#x591A;&#xFF0C;&#x5728;&#x4E00;&#x4E2A;&#x4E1A;&#x52A1;&#x5E94;&#x7528;&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x7528;&#x6237;&#x8BBF;&#x95EE;&#x7684;&#x5185;&#x5BB9;&#x53EF;&#x80FD;&#x5DEE;&#x522B;&#x5F88;&#x5927;&#x3002;</p>
+<p>&#x8FD1;&#x5E74;&#x6765;&#xFF0C;&#x6709;&#x4E9B;&#x7814;&#x7A76;&#x4EBA;&#x5458;&#x4E13;&#x95E8;&#x5BF9;&#x4E92;&#x8054;&#x7F51;&#x5E94;&#x7528;&#xFF08;&#x4F8B;&#x5982;&#x89C6;&#x9891;&#x64AD;&#x653E;&#x7F51;&#x7AD9;&#xFF09;&#x4E2D;&#xFF0C;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x8BBF;&#x95EE;&#x5185;&#x5BB9;&#x7684;&#x5206;&#x5E03;&#x60C5;&#x51B5;&#x505A;&#x8FC7;&#x5206;&#x6790;&#xFF0C;&#x5F97;&#x5230;&#x4E86;&#x8FD9;&#x5F20;&#x56FE;&#x4E2D;&#x7684;&#x7EA2;&#x7EBF;&#x3002;</p>
+<h3 id="&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x8BBE;&#x7F6E;">&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x8BBE;&#x7F6E;</h3>
+<p>&#x6B63;&#x662F;&#x56E0;&#x4E3A; 20% &#x7684;&#x6570;&#x636E;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x8D21;&#x732E; 80% &#x7684;&#x8BBF;&#x95EE;&#x91CF;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x7B80;&#x5355;&#x5730;&#x6309;&#x7167;&#x201C;&#x603B;&#x6570;&#x636E;&#x91CF;&#x7684; 20%&#x201D;&#x6765;&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;&#x6700;&#x5927;&#x7A7A;&#x95F4;&#x5BB9;&#x91CF;&#x3002;&#x662F;&#x9700;&#x8981;&#x7ED3;&#x5408;&#x5E94;&#x7528;&#x6570;&#x636E;&#x5B9E;&#x9645;<strong>&#x8BBF;&#x95EE;&#x7279;&#x5F81;</strong>&#x548C;<strong>&#x6210;&#x672C;&#x5F00;&#x9500;</strong>&#x6765;&#x7EFC;&#x5408;&#x8003;&#x8651;&#x7684;&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;&#x7684;&#x8BBE;&#x8BA1;&#x9009;&#x62E9;&#x662F;&#x4E00;&#x4E2A;&#x6743;&#x8861;&#x7684;&#x8FC7;&#x7A0B;&#xFF1A;&#x5927;&#x5BB9;&#x91CF;&#x7F13;&#x5B58;&#x662F;&#x80FD;&#x5E26;&#x6765;&#x6027;&#x80FD;&#x52A0;&#x901F;&#x7684;&#x6536;&#x76CA;&#xFF0C;&#x4F46;&#x662F;&#x6210;&#x672C;&#x4E5F;&#x4F1A;&#x66F4;&#x9AD8;&#xFF0C;&#x800C;&#x5C0F;&#x5BB9;&#x91CF;&#x7F13;&#x5B58;&#x4E0D;&#x4E00;&#x5B9A;&#x5C31;&#x8D77;&#x4E0D;&#x5230;&#x52A0;&#x901F;&#x8BBF;&#x95EE;&#x7684;&#x6548;&#x679C;&#x3002;<strong>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x5EFA;&#x8BAE;&#x628A;&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x8BBE;&#x7F6E;&#x4E3A;&#x603B;&#x6570;&#x636E;&#x91CF;&#x7684; 15% &#x5230; 30%&#xFF0C;&#x517C;&#x987E;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x548C;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x5F00;&#x9500;&#x3002;</strong>&#x8BBE;&#x7F6E;&#x547D;&#x4EE4;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>CONFIG SET maxmemory 4gb
+</code></pre><h2 id="redis&#x6DD8;&#x6C70;&#x7B56;&#x7565;">redis&#x6DD8;&#x6C70;&#x7B56;&#x7565;</h2>
+<p>redis&#x7684;&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="images/image-20210729153832743.png" alt="image-20210729153832743"></p>
+<ul>
+<li>&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Redis &#x5728;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#x8D85;&#x8FC7; maxmemory &#x503C;&#x65F6;&#xFF0C;&#x5E76;&#x4E0D;&#x4F1A;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BBE;&#x5B9A;&#x7684; <strong>noeviction &#x7B56;&#x7565;</strong>&#x3002;&#x4E00;&#x65E6;&#x7F13;&#x5B58;&#x88AB;&#x5199;&#x6EE1;&#x4E86;&#xFF0C;&#x518D;&#x6709;&#x5199;&#x8BF7;&#x6C42;&#x6765;&#x65F6;&#xFF0C;Redis &#x4E0D;&#x518D;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x3002;</li>
+<li>volatile-ttl &#x5728;&#x7B5B;&#x9009;&#x65F6;&#xFF0C;&#x4F1A;&#x9488;&#x5BF9;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x6839;&#x636E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x5148;&#x540E;&#x8FDB;&#x884C;&#x5220;&#x9664;&#xFF0C;&#x8D8A;&#x65E9;&#x8FC7;&#x671F;&#x7684;&#x8D8A;&#x5148;&#x88AB;&#x5220;&#x9664;&#x3002;</li>
+<li>volatile-random &#x5C31;&#x50CF;&#x5B83;&#x7684;&#x540D;&#x79F0;&#x4E00;&#x6837;&#xFF0C;&#x5728;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x4E2D;&#xFF0C;&#x8FDB;&#x884C;&#x968F;&#x673A;&#x5220;&#x9664;&#x3002;</li>
+<li>volatile-lru &#x4F1A;&#x4F7F;&#x7528; LRU &#x7B97;&#x6CD5;&#x7B5B;&#x9009;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x3002;</li>
+<li>volatile-lfu &#x4F1A;&#x4F7F;&#x7528; LFU &#x7B97;&#x6CD5;&#x9009;&#x62E9;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x3002;</li>
+<li>allkeys-random &#x7B56;&#x7565;&#xFF0C;&#x4ECE;&#x6240;&#x6709;&#x952E;&#x503C;&#x5BF9;&#x4E2D;&#x968F;&#x673A;&#x9009;&#x62E9;&#x5E76;&#x5220;&#x9664;&#x6570;&#x636E;&#x3002;</li>
+<li>allkeys-lru &#x7B56;&#x7565;&#xFF0C;&#x4F7F;&#x7528; LRU &#x7B97;&#x6CD5;&#x5728;&#x6240;&#x6709;&#x6570;&#x636E;&#x4E2D;&#x8FDB;&#x884C;&#x7B5B;&#x9009;&#x3002;</li>
+<li>allkeys-lfu &#x7B56;&#x7565;&#xFF0C;&#x4F7F;&#x7528; LFU &#x7B97;&#x6CD5;&#x5728;&#x6240;&#x6709;&#x6570;&#x636E;&#x4E2D;&#x8FDB;&#x884C;&#x7B5B;&#x9009;&#x3002;</li>
+</ul>
+<h3 id="lru-&#x7B97;&#x6CD5;">LRU &#x7B97;&#x6CD5;</h3>
+<p>LRU &#x7B97;&#x6CD5;&#x7684;&#x5168;&#x79F0;&#x662F; Least Recently Used&#xFF0C;&#x8FD9;&#x662F;&#x6309;&#x7167;&#x6700;<strong>&#x8FD1;&#x6700;&#x5C11;&#x4F7F;&#x7528;&#x7684;&#x539F;&#x5219;</strong>&#x6765;&#x7B5B;&#x9009;&#x6570;&#x636E;&#x3002;</p>
+<p>LRU &#x4F1A;&#x628A;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x7EC4;&#x7EC7;&#x6210;&#x4E00;&#x4E2A;&#x94FE;&#x8868;&#xFF0C;&#x94FE;&#x8868;&#x7684;&#x5934;&#x548C;&#x5C3E;&#x5206;&#x522B;&#x8868;&#x793A; MRU &#x7AEF;&#x548C; LRU &#x7AEF;&#xFF0C;&#x5206;&#x522B;&#x4EE3;&#x8868;&#x6700;&#x8FD1;&#x6700;&#x5E38;&#x4F7F;&#x7528;&#x7684;&#x6570;&#x636E;&#x548C;&#x6700;&#x8FD1;&#x6700;&#x4E0D;&#x5E38;&#x7528;&#x7684;&#x6570;&#x636E;&#x3002;&#x5982;&#x4E0B;&#x56FE;&#xFF1A;</p>
+<p><img src="images/image-20210729154318476.png" alt="image-20210729154318476" style="zoom:67%;"></p>
+<p>&#x7B97;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x6709;&#x6570;&#x636E;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x5219;&#x79FB;&#x52A8;&#x5230;MRU&#x7AEF;&#x3002;</li>
+<li>&#x6709;&#x6570;&#x636E;&#x88AB;&#x5199;&#x5165;&#xFF0C;&#x7EBF;&#x5220;&#x9664;LRU&#x7AEF;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x628A;&#x5199;&#x5165;&#x7684;&#x6570;&#x636E;&#x52A0;&#x5165;MRU&#x7AEF;&#x3002;</li>
+</ul>
+<p>&#x4E0D;&#x8FC7;&#xFF0C;LRU &#x7B97;&#x6CD5;&#x5728;&#x5B9E;&#x9645;&#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x7528;&#x94FE;&#x8868;&#x7BA1;&#x7406;&#x6240;&#x6709;&#x7684;&#x7F13;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x8FD9;&#x4F1A;&#x5E26;&#x6765;&#x989D;&#x5916;&#x7684;&#x7A7A;&#x95F4;&#x5F00;&#x9500;&#x3002;&#x800C;&#x4E14;&#xFF0C;&#x5F53;&#x6709;&#x6570;&#x636E;&#x88AB;&#x8BBF;&#x95EE;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x94FE;&#x8868;&#x4E0A;&#x628A;&#x8BE5;&#x6570;&#x636E;&#x79FB;&#x52A8;&#x5230; MRU &#x7AEF;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5927;&#x91CF;&#x6570;&#x636E;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x5C31;&#x4F1A;&#x5E26;&#x6765;&#x5F88;&#x591A;&#x94FE;&#x8868;&#x79FB;&#x52A8;&#x64CD;&#x4F5C;&#xFF0C;&#x4F1A;&#x5F88;&#x8017;&#x65F6;&#xFF0C;&#x8FDB;&#x800C;&#x4F1A;&#x964D;&#x4F4E; Redis &#x7F13;&#x5B58;&#x6027;&#x80FD;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5728; Redis &#x4E2D;&#xFF0C;LRU &#x7B97;&#x6CD5;&#x88AB;&#x505A;&#x4E86;&#x7B80;&#x5316;&#x3002;</p>
+<h3 id="redis&#x7684;lru&#x5B9E;&#x73B0;">redis&#x7684;LRU&#x5B9E;&#x73B0;</h3>
+<ul>
+<li>Redis &#x9ED8;&#x8BA4;&#x4F1A;&#x8BB0;&#x5F55;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x7684;&#x6700;&#x8FD1;&#x4E00;&#x6B21;&#x8BBF;&#x95EE;&#x7684;&#x65F6;&#x95F4;&#x6233;&#xFF08;&#x7531;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x7ED3;&#x6784; RedisObject &#x4E2D;&#x7684; lru &#x5B57;&#x6BB5;&#x8BB0;&#x5F55;&#xFF09;&#x3002;&#x7136;&#x540E;&#xFF0C;Redis &#x5728;&#x51B3;&#x5B9A;&#x6DD8;&#x6C70;&#x7684;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x4F1A;&#x968F;&#x673A;&#x9009;&#x51FA; N &#x4E2A;&#x6570;&#x636E;&#xFF0C;&#x628A;&#x5B83;&#x4EEC;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x5019;&#x9009;&#x96C6;&#x5408;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#xFF0C;Redis &#x4F1A;&#x6BD4;&#x8F83;&#x8FD9; N &#x4E2A;&#x6570;&#x636E;&#x7684; lru &#x5B57;&#x6BB5;&#xFF0C;&#x628A; lru &#x5B57;&#x6BB5;&#x503C;&#x6700;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x4ECE;&#x7F13;&#x5B58;&#x4E2D;&#x6DD8;&#x6C70;&#x51FA;&#x53BB;&#x3002;</li>
+<li>&#x5F53;&#x9700;&#x8981;&#x518D;&#x6B21;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x65F6;&#xFF0C;Redis &#x9700;&#x8981;&#x6311;&#x9009;&#x6570;&#x636E;&#x8FDB;&#x5165;&#x7B2C;&#x4E00;&#x6B21;&#x6DD8;&#x6C70;&#x65F6;&#x521B;&#x5EFA;&#x7684;&#x5019;&#x9009;&#x96C6;&#x5408;&#x3002;&#x8FD9;&#x513F;&#x7684;&#x6311;&#x9009;&#x6807;&#x51C6;&#x662F;<strong>&#xFF1A;&#x80FD;&#x8FDB;&#x5165;&#x5019;&#x9009;&#x96C6;&#x5408;&#x7684;&#x6570;&#x636E;&#x7684; lru &#x5B57;&#x6BB5;&#x503C;&#x5FC5;&#x987B;&#x5C0F;&#x4E8E;&#x5019;&#x9009;&#x96C6;&#x5408;&#x4E2D;&#x6700;&#x5C0F;&#x7684; lru &#x503C;</strong>&#x3002;&#x5F53;&#x6709;&#x65B0;&#x6570;&#x636E;&#x8FDB;&#x5165;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E2A;&#x6570;&#x8FBE;&#x5230;&#x4E86; maxmemory-samples&#xFF0C;Redis &#x5C31;&#x628A;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#x4E2D; lru &#x5B57;&#x6BB5;&#x503C;&#x6700;&#x5C0F;&#x7684;&#x6570;&#x636E;&#x6DD8;&#x6C70;&#x51FA;&#x53BB;&#x3002;</li>
+</ul>
+<p>Redis &#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x914D;&#x7F6E;&#x53C2;&#x6570; maxmemory-samples&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5C31;&#x662F; Redis &#x9009;&#x51FA;&#x7684;&#x6570;&#x636E;&#x4E2A;&#x6570; N&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x5982;&#x4E0B;&#x547D;&#x4EE4;&#xFF0C;&#x53EF;&#x4EE5;&#x8BA9; Redis &#x9009;&#x51FA; 100 &#x4E2A;&#x6570;&#x636E;&#x4F5C;&#x4E3A;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#xFF1A;</p>
+<pre><code>CONFIG SET maxmemory-samples 100
+</code></pre><h3 id="&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#x9009;&#x62E9;&#x5EFA;&#x8BAE;">&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#x9009;&#x62E9;&#x5EFA;&#x8BAE;</h3>
+<ul>
+<li><strong>&#x4F18;&#x5148;&#x4F7F;&#x7528; allkeys-lru &#x7B56;&#x7565;&#x3002;</strong>&#x8FD9;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x5145;&#x5206;&#x5229;&#x7528; LRU &#x8FD9;&#x4E00;&#x7ECF;&#x5178;&#x7F13;&#x5B58;&#x7B97;&#x6CD5;&#x7684;&#x4F18;&#x52BF;&#xFF0C;&#x628A;&#x6700;&#x8FD1;&#x6700;&#x5E38;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#x7559;&#x5728;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x63D0;&#x5347;&#x5E94;&#x7528;&#x7684;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x3002;</li>
+<li><strong>&#x5982;&#x679C;&#x4F60;&#x7684;&#x4E1A;&#x52A1;&#x6570;&#x636E;&#x4E2D;&#x6709;&#x660E;&#x663E;&#x7684;&#x51B7;&#x70ED;&#x6570;&#x636E;&#x533A;&#x5206;</strong>&#xFF0C;&#x6211;&#x5EFA;&#x8BAE;&#x4F60;&#x4F7F;&#x7528; allkeys-lru &#x7B56;&#x7565;&#x3002;&#x5982;&#x679C;&#x4E1A;&#x52A1;&#x5E94;&#x7528;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x8BBF;&#x95EE;&#x9891;&#x7387;&#x76F8;&#x5DEE;&#x4E0D;&#x5927;&#xFF0C;&#x6CA1;&#x6709;&#x660E;&#x663E;&#x7684;&#x51B7;&#x70ED;&#x6570;&#x636E;&#x533A;&#x5206;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528; allkeys-random &#x7B56;&#x7565;&#xFF0C;&#x968F;&#x673A;&#x9009;&#x62E9;&#x6DD8;&#x6C70;&#x7684;&#x6570;&#x636E;&#x5C31;&#x884C;&#x3002;</li>
+<li><strong>&#x5982;&#x679C;&#x4F60;&#x7684;&#x4E1A;&#x52A1;&#x4E2D;&#x6709;&#x7F6E;&#x9876;&#x7684;&#x9700;&#x6C42;</strong>&#xFF0C;&#x6BD4;&#x5982;&#x7F6E;&#x9876;&#x65B0;&#x95FB;&#x3001;&#x7F6E;&#x9876;&#x89C6;&#x9891;&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; volatile-lru &#x7B56;&#x7565;&#xFF0C;&#x540C;&#x65F6;&#x4E0D;&#x7ED9;&#x8FD9;&#x4E9B;&#x7F6E;&#x9876;&#x6570;&#x636E;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3002;&#x8FD9;&#x6837;&#x4E00;&#x6765;&#xFF0C;&#x8FD9;&#x4E9B;&#x9700;&#x8981;&#x7F6E;&#x9876;&#x7684;&#x6570;&#x636E;&#x4E00;&#x76F4;&#x4E0D;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x6570;&#x636E;&#x4F1A;&#x5728;&#x8FC7;&#x671F;&#x65F6;&#x6839;&#x636E; LRU &#x89C4;&#x5219;&#x8FDB;&#x884C;&#x7B5B;&#x9009;&#x3002;</li>
+</ul>
+<h2 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h2>
+<p>Redis 4.0 &#x7248;&#x672C;&#x4EE5;&#x540E;&#x4E00;&#x5171;&#x63D0;&#x4F9B;&#x4E86; 8 &#x79CD;&#x6570;&#x636E;&#x6DD8;&#x6C70;&#x7B56;&#x7565;&#xFF0C;&#x4ECE;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x7684;&#x5019;&#x9009;&#x96C6;&#x8303;&#x56F4;&#x6765;&#x770B;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E24;&#x79CD;&#x5019;&#x9009;&#x8303;&#x56F4;&#xFF1A;&#x4E00;&#x79CD;&#x662F;&#x6240;&#x6709;&#x6570;&#x636E;&#x90FD;&#x662F;&#x5019;&#x9009;&#x96C6;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x662F;&#x5019;&#x9009;&#x96C6;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x65E0;&#x8BBA;&#x662F;&#x9762;&#x5411;&#x54EA;&#x79CD;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#x8FDB;&#x884C;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x9009;&#x62E9;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x6709;&#x4E09;&#x79CD;&#x7B56;&#x7565;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x968F;&#x673A;&#x9009;&#x62E9;&#xFF0C;&#x6839;&#x636E; LRU &#x7B97;&#x6CD5;&#x9009;&#x62E9;&#xFF0C;&#x4EE5;&#x53CA;&#x6839;&#x636E; LFU &#x7B97;&#x6CD5;&#x9009;&#x62E9;&#x3002;&#x5F53;&#x7136;&#xFF0C;&#x5F53;&#x9762;&#x5411;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x96C6;&#x9009;&#x62E9;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x6570;&#x636E;&#x79BB;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x8FDC;&#x8FD1;&#x6765;&#x51B3;&#x5B9A;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x6765;&#x8BF4;&#xFF0C;&#x7F13;&#x5B58;&#x7CFB;&#x7EDF;&#x5BF9;&#x4E8E;&#x9009;&#x5B9A;&#x7684;&#x88AB;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x5176;&#x662F;&#x5E72;&#x51C0;&#x6570;&#x636E;&#x8FD8;&#x662F;&#x810F;&#x6570;&#x636E;&#xFF0C;&#x9009;&#x62E9;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x8FD8;&#x662F;&#x5199;&#x56DE;&#x6570;&#x636E;&#x5E93;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5728; Redis &#x4E2D;&#xFF0C;&#x88AB;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x65E0;&#x8BBA;&#x5E72;&#x51C0;&#x4E0E;&#x5426;&#x90FD;&#x4F1A;&#x88AB;&#x5220;&#x9664;&#xFF0C;&#x6240;&#x4EE5;&#xFF0C;<strong>&#x8FD9;&#x662F;&#x6211;&#x4EEC;&#x5728;&#x4F7F;&#x7528; Redis &#x7F13;&#x5B58;&#x65F6;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#xFF1A;&#x5F53;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x6210;&#x4E3A;&#x810F;&#x6570;&#x636E;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x4E5F;&#x628A;&#x6570;&#x636E;&#x4FEE;&#x6539;&#x8FC7;&#x6765;&#x3002;</strong></p>
+<p>&#x9009;&#x62E9;&#x54EA;&#x79CD;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF0C;&#x5148;&#x6839;&#x636E;&#x662F;&#x5426;&#x6709;&#x59CB;&#x7EC8;&#x4F1A;&#x88AB;&#x9891;&#x7E41;&#x8BBF;&#x95EE;&#x7684;&#x6570;&#x636E;&#xFF08;&#x4F8B;&#x5982;&#x7F6E;&#x9876;&#x6D88;&#x606F;&#xFF09;&#xFF0C;&#x6765;&#x9009;&#x62E9;&#x6DD8;&#x6C70;&#x6570;&#x636E;&#x7684;&#x5019;&#x9009;&#x96C6;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x51B3;&#x5B9A;&#x662F;&#x9488;&#x5BF9;&#x6240;&#x6709;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6DD8;&#x6C70;&#xFF0C;&#x8FD8;&#x662F;&#x9488;&#x5BF9;&#x8BBE;&#x7F6E;&#x4E86;&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6DD8;&#x6C70;&#x3002;&#x5019;&#x9009;&#x6570;&#x636E;&#x96C6;&#x8303;&#x56F4;&#x9009;&#x5B9A;&#x540E;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F18;&#x5148;&#x4F7F;&#x7528; LRU &#x7B97;&#x6CD5;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#xFF0C;allkeys-lru &#x6216; volatile-lru &#x7B56;&#x7565;&#x3002;</p>
+<p>&#x8BBE;&#x7F6E;&#x7F13;&#x5B58;&#x5BB9;&#x91CF;&#x7684;&#x5927;&#x5C0F;&#xFF0C;&#x7ED3;&#x5408;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x7684;&#x6570;&#x636E;&#x603B;&#x91CF;&#x3001;&#x70ED;&#x6570;&#x636E;&#x7684;&#x4F53;&#x91CF;&#xFF0C;&#x4EE5;&#x53CA;&#x6210;&#x672C;&#x9884;&#x7B97;&#xFF0C;&#x628A;&#x7F13;&#x5B58;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x8BBE;&#x7F6E;&#x5728;&#x603B;&#x6570;&#x636E;&#x91CF;&#x7684; 15% &#x5230; 30% &#x8FD9;&#x4E2A;&#x533A;&#x95F4;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="11、redis做缓存.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 11、Redis做缓存">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"12、淘汰策略","level":"2.2.12","depth":2,"next":{"title":"基础篇","level":"3.1","depth":1,"ref":"","articles":[{"title":"0、Mysql命令","level":"3.1.1","depth":2,"path":"mysql/基础篇/0、mysql命令.md","ref":"mysql/基础篇/0、mysql命令.md","articles":[]},{"title":"1、基础架构","level":"3.1.2","depth":2,"path":"mysql/基础篇/1、基础架构.md","ref":"mysql/基础篇/1、基础架构.md","articles":[]},{"title":"2、日志模块","level":"3.1.3","depth":2,"path":"mysql/基础篇/2、日志模块.md","ref":"mysql/基础篇/2、日志模块.md","articles":[]},{"title":"3、事务隔离","level":"3.1.4","depth":2,"path":"mysql/基础篇/3、事务隔离.md","ref":"mysql/基础篇/3、事务隔离.md","articles":[]},{"title":"4、索引","level":"3.1.5","depth":2,"path":"mysql/基础篇/4、索引.md","ref":"mysql/基础篇/4、索引.md","articles":[]},{"title":"5、锁","level":"3.1.6","depth":2,"path":"mysql/基础篇/5、锁.md","ref":"mysql/基础篇/5、锁.md","articles":[]}]},"previous":{"title":"11、Redis做缓存","level":"2.2.11","depth":2,"path":"redis/实践篇/11、redis做缓存.md","ref":"redis/实践篇/11、redis做缓存.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter"],"pluginsConfig":{"expandable-chapters":{},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redis/实践篇/12、淘汰策略.md","mtime":"2021-07-29T07:53:53.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-14T03:30:48.074Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
