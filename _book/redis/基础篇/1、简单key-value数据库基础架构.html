@@ -1,0 +1,771 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>1、简单Key Value数据库基础架构 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2、数据结构.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Redis</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    基础篇
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.1.1" data-path="1、简单key-value数据库基础架构.html">
+            
+                <a href="1、简单key-value数据库基础架构.html">
+            
+                    
+                    1、简单Key Value数据库基础架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="2、数据结构.html">
+            
+                <a href="2、数据结构.html">
+            
+                    
+                    2、数据结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.3" data-path="3、高性能IO模型.html">
+            
+                <a href="3、高性能IO模型.html">
+            
+                    
+                    3、高性能IO模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.4" data-path="4、redis数据持久化.html">
+            
+                <a href="4、redis数据持久化.html">
+            
+                    
+                    4、Redis数据持久化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.5" data-path="5、redis主从库模式.html">
+            
+                <a href="5、redis主从库模式.html">
+            
+                    
+                    5、Redis主从库模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.6" data-path="6、哨兵机制.html">
+            
+                <a href="6、哨兵机制.html">
+            
+                    
+                    6、哨兵机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.7" data-path="7、哨兵集群.html">
+            
+                <a href="7、哨兵集群.html">
+            
+                    
+                    7、哨兵集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.8" data-path="8、切片集群.html">
+            
+                <a href="8、切片集群.html">
+            
+                    
+                    8、切片集群
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" >
+            
+                <span>
+            
+                    
+                    实践篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../实践篇/1、string类型的内存结构和压缩表.html">
+            
+                <a href="../实践篇/1、string类型的内存结构和压缩表.html">
+            
+                    
+                    1、String类型的内存结构和压缩表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../实践篇/2、集合类型的选择.html">
+            
+                <a href="../实践篇/2、集合类型的选择.html">
+            
+                    
+                    2、集合类型的选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="../实践篇/3、扩展数据类型 GEO.html">
+            
+                <a href="../实践篇/3、扩展数据类型 GEO.html">
+            
+                    
+                    3、扩展数据类型 GEO
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.4" data-path="../实践篇/4、存储时间序列数据.html">
+            
+                <a href="../实践篇/4、存储时间序列数据.html">
+            
+                    
+                    4、存储时间序列数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.5" data-path="../实践篇/5、实现消息队列.html">
+            
+                <a href="../实践篇/5、实现消息队列.html">
+            
+                    
+                    5、实现消息队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.6" data-path="../实践篇/6、内部阻塞式操作.html">
+            
+                <a href="../实践篇/6、内部阻塞式操作.html">
+            
+                    
+                    6、内部阻塞式操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.7" data-path="../实践篇/7、CPU结构对redis的影响.html">
+            
+                <a href="../实践篇/7、CPU结构对redis的影响.html">
+            
+                    
+                    7、CPU结构对Redis的影响
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.8" data-path="../实践篇/8、redis变慢问题.html">
+            
+                <a href="../实践篇/8、redis变慢问题.html">
+            
+                    
+                    8、Redis变慢问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.9" data-path="../实践篇/9、redis内存碎片.html">
+            
+                <a href="../实践篇/9、redis内存碎片.html">
+            
+                    
+                    9、Redis内存碎片
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.10" data-path="../实践篇/10、缓冲区.html">
+            
+                <a href="../实践篇/10、缓冲区.html">
+            
+                    
+                    10、缓冲区
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.11" data-path="../实践篇/11、redis做缓存.html">
+            
+                <a href="../实践篇/11、redis做缓存.html">
+            
+                    
+                    11、Redis做缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.12" data-path="../实践篇/12、淘汰策略.html">
+            
+                <a href="../实践篇/12、淘汰策略.html">
+            
+                    
+                    12、淘汰策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Mysql</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" >
+            
+                <span>
+            
+                    
+                    基础篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../../mysql/基础篇/0、mysql命令.html">
+            
+                <a href="../../mysql/基础篇/0、mysql命令.html">
+            
+                    
+                    0、Mysql命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../../mysql/基础篇/1、基础架构.html">
+            
+                <a href="../../mysql/基础篇/1、基础架构.html">
+            
+                    
+                    1、基础架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../../mysql/基础篇/2、日志模块.html">
+            
+                <a href="../../mysql/基础篇/2、日志模块.html">
+            
+                    
+                    2、日志模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../../mysql/基础篇/3、事务隔离.html">
+            
+                <a href="../../mysql/基础篇/3、事务隔离.html">
+            
+                    
+                    3、事务隔离
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../../mysql/基础篇/4、索引.html">
+            
+                <a href="../../mysql/基础篇/4、索引.html">
+            
+                    
+                    4、索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../../mysql/基础篇/5、锁.html">
+            
+                <a href="../../mysql/基础篇/5、锁.html">
+            
+                    
+                    5、锁
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" >
+            
+                <span>
+            
+                    
+                    实践篇
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.2.1" data-path="../../mysql/实践篇/1、普通索引和唯一索引.html">
+            
+                <a href="../../mysql/实践篇/1、普通索引和唯一索引.html">
+            
+                    
+                    1、普通索引和唯一索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.2" data-path="../../mysql/实践篇/2、怎么给字符串字段加索引.html">
+            
+                <a href="../../mysql/实践篇/2、怎么给字符串字段加索引.html">
+            
+                    
+                    2、怎么给字符串字段加索引
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2.3" data-path="../../mysql/实践篇/3、如何计算表的数据量.html">
+            
+                <a href="../../mysql/实践篇/3、如何计算表的数据量.html">
+            
+                    
+                    3、如何计算表的数据量
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >1、简单Key Value数据库基础架构</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x7B80;&#x5355;key-value&#x6570;&#x636E;&#x5E93;&#x57FA;&#x7840;&#x67B6;&#x6784;">&#x7B80;&#x5355;key-value&#x6570;&#x636E;&#x5E93;&#x57FA;&#x7840;&#x67B6;&#x6784;</h1>
+<h2 id="&#x6570;&#x636E;&#x6A21;&#x578B;">&#x6570;&#x636E;&#x6A21;&#x578B;</h2>
+<p>&#x5BF9;&#x4E8E;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x800C;&#x8A00;&#xFF0C;&#x57FA;&#x672C;&#x7684;&#x6570;&#x636E;&#x6A21;&#x578B;&#x662F; key-value &#x6A21;&#x578B;&#x3002;</p>
+<ul>
+<li><p>key&#x662F;string&#x7C7B;&#x578B;&#x3002;</p>
+</li>
+<li><p>value&#x7684;&#x7C7B;&#x578B;&#x6709;String&#x3001;&#x54C8;&#x5E0C;&#x8868;&#x3001;&#x5217;&#x8868;&#x3001;&#x96C6;&#x5408;&#x7B49;&#xFF08;Redis &#x80FD;&#x591F;&#x5728;&#x5B9E;&#x9645;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#x4E2D;&#x5F97;&#x5230;&#x5E7F;&#x6CDB;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5C31;&#x662F;&#x5F97;&#x76CA;&#x4E8E;&#x652F;&#x6301;&#x591A;&#x6837;&#x5316;&#x7C7B;&#x578B;&#x7684; value&#xFF09;&#x3002;&#x4ECE;&#x4F7F;&#x7528;&#x7684;&#x89D2;&#x5EA6;&#x6765;&#x8BF4;&#xFF0C;&#x4E0D;&#x540C; value &#x7C7B;&#x578B;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x4EC5;&#x53EF;&#x4EE5;&#x652F;&#x6491;&#x4E0D;&#x540C;&#x4E1A;&#x52A1;&#x7684;&#x6570;&#x636E;&#x9700;&#x6C42;&#xFF0C;&#x800C;&#x4E14;&#x4E5F;&#x9690;&#x542B;&#x7740;&#x4E0D;&#x540C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x5728;&#x6027;&#x80FD;&#x3001;&#x7A7A;&#x95F4;&#x6548;&#x7387;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;&#x4ECE;&#x800C;&#x5BFC;&#x81F4;&#x4E0D;&#x540C;&#x7684; value &#x64CD;&#x4F5C;&#x4E4B;&#x95F4;&#x5B58;&#x5728;&#x7740;&#x5DEE;&#x5F02;&#x3002;</p>
+</li>
+</ul>
+<h2 id="&#x64CD;&#x4F5C;&#x63A5;&#x53E3;">&#x64CD;&#x4F5C;&#x63A5;&#x53E3;</h2>
+<p>&#x7B80;&#x5355;key-value&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5BF9;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x7684;&#x64CD;&#x4F5C;&#x63A5;&#x53E3;&#x57FA;&#x672C;&#x5305;&#x542B;4&#x4E2D;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ul>
+<li>PUT&#xFF1A;&#x65B0;&#x5199;&#x5165;&#x6216;&#x66F4;&#x65B0;&#x4E00;&#x4E2A; key-value &#x5BF9;&#xFF1B;</li>
+<li>GET&#xFF1A;&#x6839;&#x636E;&#x4E00;&#x4E2A; key &#x8BFB;&#x53D6;&#x76F8;&#x5E94;&#x7684; value &#x503C;&#xFF1B;</li>
+<li>DELETE&#xFF1A;&#x6839;&#x636E;&#x4E00;&#x4E2A; key &#x5220;&#x9664;&#x6574;&#x4E2A; key-value &#x5BF9;&#x3002;</li>
+<li>SCAN&#xFF1A;&#x6839;&#x636E;&#x4E00;&#x6BB5; key &#x7684;&#x8303;&#x56F4;&#x8FD4;&#x56DE;&#x76F8;&#x5E94;&#x7684; value &#x503C;&#x3002;</li>
+<li>EXISTS&#xFF1A;&#x5224;&#x65AD;&#x67D0;&#x4E2A; key &#x662F;&#x5426;&#x5B58;&#x5728;&#x3002;</li>
+</ul>
+<h2 id="&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;">&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;</h2>
+<p>&#x6570;&#x636E;&#x5E93;&#x5B58;&#x50A8;&#x53EF;&#x4EE5;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x548C;&#x78C1;&#x76D8;&#x4E0A;&#xFF1A;</p>
+<ul>
+<li>&#x5185;&#x5B58;&#xFF1A;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x7684;&#x597D;&#x5904;&#x662F;&#x8BFB;&#x5199;&#x5F88;&#x5FEB;&#xFF0C;&#x6BD5;&#x7ADF;&#x5185;&#x5B58;&#x7684;&#x8BBF;&#x95EE;&#x901F;&#x5EA6;&#x4E00;&#x822C;&#x90FD;&#x5728;&#x767E; ns &#x7EA7;&#x522B;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x6F5C;&#x5728;&#x7684;&#x98CE;&#x9669;&#x662F;&#x4E00;&#x65E6;&#x6389;&#x7535;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x4E22;&#x5931;&#x3002;</li>
+<li>&#x4FDD;&#x5B58;&#x5728;&#x5916;&#x5B58;&#xFF0C;&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x907F;&#x514D;&#x6570;&#x636E;&#x4E22;&#x5931;&#xFF0C;&#x4F46;&#x662F;&#x53D7;&#x9650;&#x4E8E;&#x78C1;&#x76D8;&#x7684;&#x6162;&#x901F;&#x8BFB;&#x5199;&#xFF08;&#x901A;&#x5E38;&#x5728;&#x51E0; ms &#x7EA7;&#x522B;&#xFF09;&#xFF0C;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x6574;&#x4F53;&#x6027;&#x80FD;&#x4F1A;&#x88AB;&#x62C9;&#x4F4E;&#x3002;</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#xFF0C;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x8BBE;&#x8BA1;&#x9009;&#x62E9;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x5E38;&#x9700;&#x8981;&#x8003;&#x8651;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x4E3B;&#x8981;&#x5E94;&#x7528;&#x573A;&#x666F;&#x3002;</p>
+<h2 id="&#x5185;&#x90E8;&#x6846;&#x67B6;">&#x5185;&#x90E8;&#x6846;&#x67B6;</h2>
+<p>&#x5927;&#x4F53;&#x6765;&#x8BF4;&#xFF0C;&#x4E00;&#x4E2A;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x5305;&#x62EC;&#x4E86;&#x8BBF;&#x95EE;&#x6846;&#x67B6;&#x3001;&#x7D22;&#x5F15;&#x6A21;&#x5757;&#x3001;&#x64CD;&#x4F5C;&#x6A21;&#x5757;&#x548C;&#x5B58;&#x50A8;&#x6A21;&#x5757;&#x56DB;&#x90E8;&#x5206;&#xFF08;&#x89C1;&#x4E0B;&#x56FE;&#xFF09;&#x3002;</p>
+<p><img src="images/image-20210703172621002.png" alt="image-20210703172621002"></p>
+<h3 id="&#x8BBF;&#x95EE;&#x6A21;&#x5757;">&#x8BBF;&#x95EE;&#x6A21;&#x5757;</h3>
+<p>&#x8BBF;&#x95EE;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x6709;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ul>
+<li>&#x4E00;&#x79CD;&#x662F;&#x901A;&#x8FC7;&#x51FD;&#x6570;&#x5E93;&#x8C03;&#x7528;&#x7684;&#x65B9;&#x5F0F;&#x4F9B;&#x5916;&#x90E8;&#x5E94;&#x7528;&#x4F7F;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#xFF0C;&#x4E0A;&#x56FE;&#x4E2D;&#x7684; libsimplekv.so&#xFF0C;&#x5C31;&#x662F;&#x4EE5;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5E93;&#x7684;&#x5F62;&#x5F0F;&#x94FE;&#x63A5;&#x5230;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x63D0;&#x4F9B;&#x952E;&#x503C;&#x5B58;&#x50A8;&#x529F;&#x80FD;&#x3002;</li>
+<li>&#x53E6;&#x4E00;&#x79CD;&#x662F;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x4EE5; Socket &#x901A;&#x4FE1;&#x7684;&#x5F62;&#x5F0F;&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x952E;&#x503C;&#x5BF9;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x53EF;&#x4EE5;&#x63D0;&#x4F9B;&#x5E7F;&#x6CDB;&#x7684;&#x952E;&#x503C;&#x5B58;&#x50A8;&#x670D;&#x52A1;&#x3002;&#x5728;&#x4E0A;&#x56FE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x4E2D;&#x5305;&#x62EC; Socket Server &#x548C;&#x534F;&#x8BAE;&#x89E3;&#x6790;&#x3002;</li>
+</ul>
+<h3 id="&#x7D22;&#x5F15;&#x6A21;&#x5757;">&#x7D22;&#x5F15;&#x6A21;&#x5757;</h3>
+<p>&#x91C7;&#x7528;&#x7D22;&#x5F15;&#x6A21;&#x5757;&#x6765;&#x5B9A;&#x4F4D;&#x3002;&#x7D22;&#x5F15;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x8BA9;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x6839;&#x636E; key &#x627E;&#x5230;&#x76F8;&#x5E94; value &#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#xFF0C;&#x8FDB;&#x800C;&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x3002;&#x7D22;&#x5F15;&#x7684;&#x7C7B;&#x578B;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x6709;&#x54C8;&#x5E0C;&#x8868;&#x3001;B+ &#x6811;&#x3001;&#x5B57;&#x5178;&#x6811;&#x7B49;&#x3002;&#x4E0D;&#x540C;&#x7684;&#x7D22;&#x5F15;&#x7ED3;&#x6784;&#x5728;&#x6027;&#x80FD;&#x3001;&#x7A7A;&#x95F4;&#x6D88;&#x8017;&#x3001;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x7B49;&#x65B9;&#x9762;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x7279;&#x5F81;&#x3002;&#x4F8B;&#x5982;&#xFF0C;Memcached &#x548C; Redis &#x91C7;&#x7528;&#x54C8;&#x5E0C;&#x8868;&#x4F5C;&#x4E3A; key-value &#x7D22;&#x5F15;&#xFF0C;&#x800C; RocksDB &#x5219;&#x91C7;&#x7528;&#x8DF3;&#x8868;&#x4F5C;&#x4E3A;&#x5185;&#x5B58;&#x4E2D; key-value &#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<p>&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x5185;&#x5B58;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#xFF08;&#x4F8B;&#x5982; Redis&#xFF09;&#x91C7;&#x7528;&#x54C8;&#x5E0C;&#x8868;&#x4F5C;&#x4E3A;&#x7D22;&#x5F15;&#xFF0C;&#x5F88;&#x5927;&#x4E00;&#x90E8;&#x5206;&#x539F;&#x56E0;&#x5728;&#x4E8E;&#xFF0C;&#x5176;&#x952E;&#x503C;&#x6570;&#x636E;&#x57FA;&#x672C;&#x90FD;&#x662F;&#x4FDD;&#x5B58;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#xFF0C;&#x800C;&#x5185;&#x5B58;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x968F;&#x673A;&#x8BBF;&#x95EE;&#x7279;&#x6027;&#x53EF;&#x4EE5;&#x5F88;&#x597D;&#x5730;&#x4E0E;&#x54C8;&#x5E0C;&#x8868; O(1) &#x7684;&#x64CD;&#x4F5C;&#x590D;&#x6742;&#x5EA6;&#x76F8;&#x5339;&#x914D;&#xFF08;&#x54C8;&#x5E0C;&#x548C;B+&#x6811;&#x7684;&#x533A;&#x522B;&#x5728;&#x4E8E;&#xFF1A; &#x54C8;&#x5E0C;O(1)&#xFF0C;&#x8DF3;&#x8868;O(logn)&#xFF0C;&#x8FD9;&#x662F;&#x6027;&#x80FD;&#x4E0A;&#x7684;&#x5DEE;&#x8DDD;&#x3002; &#x529F;&#x80FD;&#x4E0A;&#x7684;&#x5DEE;&#x5F02;&#x662F;&#xFF1A;&#x54C8;&#x5E0C;&#x53EA;&#x80FD;&#x8FDB;&#x884C;&#x5355;&#x503C;&#x67E5;&#x627E;&#xFF0C;&#x8DF3;&#x8868;&#x53EF;&#x4EE5;&#x8FDB;&#x884C;&#x6570;&#x503C;&#x8303;&#x56F4;&#x67E5;&#x627E;&#xFF09;&#x3002;</p>
+<h3 id="&#x64CD;&#x4F5C;&#x6A21;&#x5757;">&#x64CD;&#x4F5C;&#x6A21;&#x5757;</h3>
+<p>&#x7D22;&#x5F15;&#x6A21;&#x5757;&#x8D1F;&#x8D23;&#x6839;&#x636E; key &#x627E;&#x5230;&#x76F8;&#x5E94;&#x7684; value &#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x3002;&#x5BF9;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x6765;&#x8BF4;&#xFF0C;&#x627E;&#x5230;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x7684;&#x5177;&#x4F53;&#x903B;&#x8F91;&#x4F1A;&#x6709;&#x6240;&#x5DEE;&#x5F02;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E; GET/SCAN &#x64CD;&#x4F5C;&#x800C;&#x8A00;&#xFF0C;&#x6B64;&#x65F6;&#x6839;&#x636E; value &#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#x8FD4;&#x56DE; value &#x503C;&#x5373;&#x53EF;&#xFF1B;</li>
+<li>&#x5BF9;&#x4E8E; PUT &#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x800C;&#x8A00;&#xFF0C;&#x9700;&#x8981;&#x4E3A;&#x8BE5;&#x952E;&#x503C;&#x5BF9;&#x5206;&#x914D;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF1B;</li>
+<li>&#x5BF9;&#x4E8E; DELETE &#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x5220;&#x9664;&#x952E;&#x503C;&#x5BF9;&#xFF0C;&#x5E76;&#x91CA;&#x653E;&#x76F8;&#x5E94;&#x7684;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x7531;&#x5206;&#x914D;&#x5668;&#x5B8C;&#x6210;&#x3002;</li>
+</ul>
+<h3 id="&#x5B58;&#x50A8;&#x6A21;&#x5757;">&#x5B58;&#x50A8;&#x6A21;&#x5757;</h3>
+<h4 id="&#x5206;&#x914D;&#x5668;">&#x5206;&#x914D;&#x5668;</h4>
+<p>&#x5E38;&#x7528;&#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#x5668; glibc &#x7684; malloc &#x548C; free&#xFF0C;&#x4F46;&#x662F;&#xFF0C;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x901A;&#x5E38;&#x5927;&#x5C0F;&#x4E0D;&#x4E00;&#xFF0C;glibc &#x7684;&#x5206;&#x914D;&#x5668;&#x5728;&#x5904;&#x7406;&#x968F;&#x673A;&#x7684;&#x5927;&#x5C0F;&#x5185;&#x5B58;&#x5757;&#x5206;&#x914D;&#x65F6;&#xFF0C;&#x8868;&#x73B0;&#x5E76;&#x4E0D;&#x597D;&#x3002;&#x4E00;&#x65E6;&#x4FDD;&#x5B58;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;&#x89C4;&#x6A21;&#x8FC7;&#x5927;&#xFF0C;&#x5C31;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x8F83;&#x4E25;&#x91CD;&#x7684;&#x5185;&#x5B58;&#x788E;&#x7247;&#x95EE;&#x9898;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x5206;&#x914D;&#x5668;&#x662F;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x5173;&#x952E;&#x56E0;&#x7D20;&#x3002;&#x5BF9;&#x4E8E;&#x4EE5;&#x5185;&#x5B58;&#x5B58;&#x50A8;&#x4E3A;&#x4E3B;&#x7684; Redis &#x800C;&#x8A00;&#xFF0C;&#x8FD9;&#x70B9;&#x5C24;&#x4E3A;&#x91CD;&#x8981;&#x3002;Redis &#x7684;&#x5185;&#x5B58;&#x5206;&#x914D;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x591A;&#x79CD;&#x9009;&#x62E9;&#xFF0C;&#x5206;&#x914D;&#x6548;&#x7387;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x540E;&#x9762;&#x6211;&#x4F1A;&#x5177;&#x4F53;&#x8BB2;&#x4E00;&#x8BB2;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x6301;&#x4E45;&#x5316;">&#x6301;&#x4E45;&#x5316;</h4>
+<p>Redis &#x63D0;&#x4F9B;&#x4E86;&#x6301;&#x4E45;&#x5316;&#x529F;&#x80FD;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x4E3A;&#x4E86;&#x9002;&#x5E94;&#x4E0D;&#x540C;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#xFF0C;Redis &#x4E3A;&#x6301;&#x4E45;&#x5316;&#x63D0;&#x4F9B;&#x4E86;&#x8BF8;&#x591A;&#x7684;&#x6267;&#x884C;&#x673A;&#x5236;&#x548C;&#x4F18;&#x5316;&#x6539;&#x8FDB;&#xFF0C;&#x540E;&#x9762;&#x6211;&#x4F1A;&#x548C;&#x4F60;&#x9010;&#x4E00;&#x4ECB;&#x7ECD; Redis &#x5728;&#x6301;&#x4E45;&#x5316;&#x673A;&#x5236;&#x4E2D;&#x7684;&#x5173;&#x952E;&#x8BBE;&#x8BA1;&#x8003;&#x8651;&#x3002;</p>
+<h2 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h2>
+<p>&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x66F4;&#x52A0;&#x4E30;&#x5BCC;&#x7684;&#x4E1A;&#x52A1;&#x573A;&#x666F;&#xFF0C;Redis &#x5BF9;&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x7EC4;&#x4EF6;&#x6216;&#x8005;&#x529F;&#x80FD;&#x8FDB;&#x884C;&#x4E86;&#x6269;&#x5C55;&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x662F;&#x8FDB;&#x884C;&#x4E86;&#x7CBE;&#x7EC6;&#x4F18;&#x5316;&#xFF0C;&#x4ECE;&#x800C;&#x6EE1;&#x8DB3;&#x4E86;&#x529F;&#x80FD;&#x548C;&#x6027;&#x80FD;&#x7B49;&#x65B9;&#x9762;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+<p><img src="images/image-20210703182100195.png" alt="image-20210703182100195"></p>
+<p>&#x4ECE;&#x8FD9;&#x5F20;&#x5BF9;&#x6BD4;&#x56FE;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x4ECE; &#x57FA;&#x7840;key-value&#x6570;&#x636E;&#x5E93;&#x6F14;&#x8FDB;&#x5230; Redis&#xFF0C;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x91CD;&#x8981;&#x53D8;&#x5316;&#xFF1A;</p>
+<ul>
+<li>Redis &#x4E3B;&#x8981;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x6846;&#x67B6;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C;&#x800C;&#x4E0D;&#x518D;&#x662F;&#x52A8;&#x6001;&#x5E93;&#x4E86;&#xFF0C;&#x8FD9;&#x4E5F;&#x4F7F;&#x5F97; Redis &#x53EF;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x57FA;&#x7840;&#x6027;&#x7684;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF0C;&#x6269;&#x5927;&#x4E86; Redis &#x7684;&#x5E94;&#x7528;&#x8303;&#x56F4;&#x3002;</li>
+<li>Redis &#x6570;&#x636E;&#x6A21;&#x578B;&#x4E2D;&#x7684; value &#x7C7B;&#x578B;&#x5F88;&#x4E30;&#x5BCC;&#xFF0C;&#x56E0;&#x6B64;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x66F4;&#x591A;&#x7684;&#x64CD;&#x4F5C;&#x63A5;&#x53E3;&#xFF0C;&#x4F8B;&#x5982;&#x9762;&#x5411;&#x5217;&#x8868;&#x7684; LPUSH/LPOP&#xFF0C;&#x9762;&#x5411;&#x96C6;&#x5408;&#x7684; SADD/SREM &#x7B49;&#x3002;</li>
+<li>Redis &#x7684;&#x6301;&#x4E45;&#x5316;&#x6A21;&#x5757;&#x80FD;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;&#x65E5;&#x5FD7;&#xFF08;AOF&#xFF09;&#x548C;&#x5FEB;&#x7167;&#xFF08;RDB&#xFF09;&#xFF0C;&#x8FD9;&#x4E24;&#x79CD;&#x6301;&#x4E45;&#x5316;&#x65B9;&#x5F0F;&#x5177;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x4F18;&#x52A3;&#x52BF;&#xFF0C;&#x5F71;&#x54CD;&#x5230; Redis &#x7684;&#x8BBF;&#x95EE;&#x6027;&#x80FD;&#x548C;&#x53EF;&#x9760;&#x6027;&#x3002;</li>
+<li>SimpleKV &#x662F;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5355;&#x673A;&#x952E;&#x503C;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x4F46;&#x662F;&#xFF0C;Redis &#x652F;&#x6301;&#x9AD8;&#x53EF;&#x9760;&#x96C6;&#x7FA4;&#x548C;&#x9AD8;&#x53EF;&#x6269;&#x5C55;&#x96C6;&#x7FA4;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;Redis &#x4E2D;&#x5305;&#x542B;&#x4E86;&#x76F8;&#x5E94;&#x7684;&#x96C6;&#x7FA4;&#x529F;&#x80FD;&#x652F;&#x6491;&#x6A21;&#x5757;&#x3002;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 基础篇">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2、数据结构.html" class="navigation navigation-next " aria-label="Next page: 2、数据结构">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"1、简单Key Value数据库基础架构","level":"2.1.1","depth":2,"next":{"title":"2、数据结构","level":"2.1.2","depth":2,"path":"redis/基础篇/2、数据结构.md","ref":"redis/基础篇/2、数据结构.md","articles":[]},"previous":{"title":"基础篇","level":"2.1","depth":1,"path":"redis/基础篇/README.md","ref":"redis/基础篇/README.md","articles":[{"title":"1、简单Key Value数据库基础架构","level":"2.1.1","depth":2,"path":"redis/基础篇/1、简单key-value数据库基础架构.md","ref":"redis/基础篇/1、简单key-value数据库基础架构.md","articles":[]},{"title":"2、数据结构","level":"2.1.2","depth":2,"path":"redis/基础篇/2、数据结构.md","ref":"redis/基础篇/2、数据结构.md","articles":[]},{"title":"3、高性能IO模型","level":"2.1.3","depth":2,"path":"redis/基础篇/3、高性能IO模型.md","ref":"redis/基础篇/3、高性能IO模型.md","articles":[]},{"title":"4、Redis数据持久化","level":"2.1.4","depth":2,"path":"redis/基础篇/4、redis数据持久化.md","ref":"redis/基础篇/4、redis数据持久化.md","articles":[]},{"title":"5、Redis主从库模式","level":"2.1.5","depth":2,"path":"redis/基础篇/5、redis主从库模式.md","ref":"redis/基础篇/5、redis主从库模式.md","articles":[]},{"title":"6、哨兵机制","level":"2.1.6","depth":2,"path":"redis/基础篇/6、哨兵机制.md","ref":"redis/基础篇/6、哨兵机制.md","articles":[]},{"title":"7、哨兵集群","level":"2.1.7","depth":2,"path":"redis/基础篇/7、哨兵集群.md","ref":"redis/基础篇/7、哨兵集群.md","articles":[]},{"title":"8、切片集群","level":"2.1.8","depth":2,"path":"redis/基础篇/8、切片集群.md","ref":"redis/基础篇/8、切片集群.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","splitter"],"pluginsConfig":{"expandable-chapters":{},"splitter":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redis/基础篇/1、简单key-value数据库基础架构.md","mtime":"2021-07-03T10:23:42.891Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-14T03:30:48.074Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
